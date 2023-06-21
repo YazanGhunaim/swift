@@ -10,11 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @State private var score = 0
     @State private var showingScore = false
+    @State private var gameEnded = false
     @State private var scoreTitle = ""
+    @State private var userAnswer = 0
+    @State private var roundLength = 7
     
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     
     @State private var correctAnswer = Int.random(in: 0...2)
+    
     
     var body: some View {
         ZStack {
@@ -70,12 +74,29 @@ struct ContentView: View {
                 .alert(scoreTitle, isPresented: $showingScore) {
                     Button("Continue", action: askQuestion)
                 } message: {
-                    Text("Your score is \(score)")
+                    if scoreTitle == "Correct" {
+                        Text("Your score is \(score)")
+                    }
+                    else {
+                        Text("Wrong thats the flag of \(countries[userAnswer])")
+                    }
+                }
+            
+                .alert("Game Over!", isPresented: $gameEnded) {
+                    Button("New Game!", action: reset)
+                } message: {
+                    Text("8 rounds of guessing are over, would you like to try again ?")
                 }
         }
     }
     
+    func checkGameOver() {
+        roundLength == 0 ? (gameEnded = true) : (roundLength -= 1)
+    }
+    
     func flagTapped(_ number: Int) {
+        userAnswer = number
+        
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
@@ -84,12 +105,21 @@ struct ContentView: View {
             scoreTitle = "Wrong"
         }
         showingScore = true
+        
+        checkGameOver()
     }
     
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
+    
+    func reset() {
+        askQuestion()
+        roundLength = 7
+        score = 0
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
