@@ -31,8 +31,8 @@ struct ContentView: View {
             Form {
                 Section {
                     TextField("Amount", value: $checkAmount, format: currencyType)
-                    .keyboardType(.decimalPad)
-                    .focused($isFocused)
+                        .keyboardType(.decimalPad)
+                        .focused($isFocused)
                     
                     Picker("Number of people", selection: $numberOfPeople) {
                         ForEach(2..<11) {
@@ -54,12 +54,14 @@ struct ContentView: View {
                 
                 Section {
                     Text(totalPerPerson * Double(numberOfPeople + 2), format: currencyType)
+                        .foregroundColor(tipPercentage == 0 ? .red : .primary)
                 } header: {
                     Text("Total")
                 }
                 
                 Section {
                     Text(totalPerPerson, format: currencyType)
+                        .foregroundColor(tipPercentage == 0 ? .red : .primary)
                 } header: {
                     Text("Amount per person")
                 }
