@@ -16,6 +16,8 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    @State private var score = 0
+    
     var body: some View {
         NavigationView {
             List {
@@ -32,6 +34,10 @@ struct ContentView: View {
                         }
                     }
                 }
+                
+                Section("Score") {
+                    Text("\(score)")
+                }
             }
             .navigationTitle(rootWord)
             .onSubmit(addNewWord)
@@ -41,28 +47,21 @@ struct ContentView: View {
             } message: {
                 Text(errorMessage)
             }
+            
+            .toolbar {
+                ToolbarItem {
+                    Button("Start Game") {startGame()}
+                }
+            }
         }
     }
     
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-        guard answer.count > 0 else { return }
+        let letterCount = answer.count
+        guard letterCount > 0 else { return }
         
-        guard isOriginal(word: answer) else {
-            wordError(title: "Word used already", message: "Be more original!")
-            
-            return
-        }
-        
-        guard isPossible(word: answer) else {
-            wordError(title: "Word not possible", message: "you cant spel that word from '\(rootWord)'!")
-            
-            return
-        }
-        
-        guard isReal(word: answer) else {
-            wordError(title: "Word not recognized", message: "You cant just make them up you know!")
-            
+        guard wordChecks(answer: answer) else {
             return
         }
         
@@ -70,6 +69,7 @@ struct ContentView: View {
             usedWords.insert(answer, at: 0)
         }
         
+        score += letterCount * usedWords.count
         newWord = ""
     }
     
@@ -78,6 +78,8 @@ struct ContentView: View {
             if let startWords = try? String(contentsOf: startWordsURL) {
                 let allWords = startWords.components(separatedBy: "\n")
                 rootWord = allWords.randomElement() ?? "yazanghunaim"
+                score = 0
+                usedWords.removeAll()
                 return
             }
         }
@@ -108,6 +110,48 @@ struct ContentView: View {
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         
         return misspelledRange.location == NSNotFound
+    }
+    
+    func lengthCheck(word: String) -> Bool {
+        word.count > 2
+    }
+    
+    func startWord(word: String) -> Bool {
+        word != rootWord
+    }
+    
+    func wordChecks(answer: String) -> Bool{
+        guard isOriginal(word: answer) else {
+            wordError(title: "Word used already", message: "Be more original!")
+            
+            return false
+        }
+        
+        guard isPossible(word: answer) else {
+            wordError(title: "Word not possible", message: "you cant spel that word from '\(rootWord)'!")
+            
+            return false
+        }
+        
+        guard isReal(word: answer) else {
+            wordError(title: "Word not recognized", message: "You cant just make them up you know!")
+            
+            return false
+        }
+        
+        guard lengthCheck(word: answer) else {
+            wordError(title: "Word too short", message: "Word must be atleast 3 characters!")
+            
+            return false
+        }
+        
+        guard startWord(word: answer) else {
+            wordError(title: "Cant count that one ;)", message: "Try be more creative!")
+            
+            return false
+        }
+        
+        return true
     }
     
     func wordError(title: String, message: String) {
