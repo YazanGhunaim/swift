@@ -11,15 +11,18 @@ struct ContentView: View {
     @State private var enabled = false
     
     var body: some View {
-        Button("Tap Me") {
-            enabled.toggle()
+        Button {
+            withAnimation {
+                enabled.toggle()
+            }
+        } label: {
+            Image(systemName: "envelope")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
         }
         .frame(width: 200, height: 200)
-        .background(enabled ? .blue : .red)
-        .animation(.default, value: enabled)
-        .foregroundColor(.white)
-        .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
-        .animation(.interpolatingSpring(stiffness: 10, damping: 1), value: enabled)
+        .rotation3DEffect(Angle(degrees: enabled ? 360.0 : 0), axis: (x: 0, y: 1, z: 0))
+        .animation(.linear(duration: 1.0).repeatForever(autoreverses: true), value: enabled)
     }
 }
 

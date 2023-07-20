@@ -22,6 +22,7 @@ struct ContentView: View {
     @State private var score = 0
     @State private var showingScore = false
     @State private var gameEnded = false
+    @State private var tapped = false
     @State private var scoreTitle = ""
     @State private var userAnswer = 0
     @State private var roundLength = 7
@@ -29,6 +30,8 @@ struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     
     @State private var correctAnswer = Int.random(in: 0...2)
+    
+    @State private var tappedFlags: [Bool] = [false, false, false]
     
     
     var body: some View {
@@ -59,9 +62,17 @@ struct ContentView: View {
                     ForEach(0..<3) { number in
                         Button {
                             flagTapped(number)
+                            
+                            tapped.toggle()
+                            
                         } label: {
                             flagImage(imageName: countries[number])
                         }
+                        .rotation3DEffect(.degrees(tappedFlags[number] ? 360.0 : 0), axis: (x: 0, y: 1, z: 0))
+                        .scaleEffect(tapped ? (tappedFlags[number] ? 1 : 0.5) : 1)
+                        .opacity(tapped ? (tappedFlags[number] ? 1 : 0.25) : 1)
+                        .animation(.linear(duration: 1), value: tappedFlags[number])
+                        .animation(.easeInOut, value: tapped)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -113,6 +124,7 @@ struct ContentView: View {
             scoreTitle = "Wrong"
         }
         showingScore = true
+        tappedFlags[number].toggle()
         
         checkGameOver()
     }
@@ -120,12 +132,16 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        tappedFlags = Array(repeating: false, count: tappedFlags.count)
+        tapped = false
     }
     
     func reset() {
         askQuestion()
         roundLength = 7
         score = 0
+        tappedFlags = Array(repeating: false, count: tappedFlags.count)
+        tapped = false
     }
     
 }
