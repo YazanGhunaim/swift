@@ -11,6 +11,8 @@
 		EA4DB3B82A6D503D00AD26AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4DB3B72A6D503D00AD26AC /* ContentView.swift */; };
 		EA4DB3BA2A6D503D00AD26AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA4DB3B92A6D503D00AD26AC /* Assets.xcassets */; };
 		EA4DB3BD2A6D503E00AD26AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA4DB3BC2A6D503E00AD26AC /* Preview Assets.xcassets */; };
+		EA800D7E2A73D54D009FD50B /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA800D7D2A73D54D009FD50B /* Question.swift */; };
+		EA800D812A73DBC5009FD50B /* QuestionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA800D802A73DBC5009FD50B /* QuestionScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		EA4DB3B72A6D503D00AD26AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EA4DB3B92A6D503D00AD26AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA4DB3BC2A6D503E00AD26AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EA800D7D2A73D54D009FD50B /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		EA800D802A73DBC5009FD50B /* QuestionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		EA4DB3B42A6D503D00AD26AC /* edutainment */ = {
 			isa = PBXGroup;
 			children = (
+				EA800D7C2A73D53B009FD50B /* Components */,
+				EA800D792A73D4C5009FD50B /* Core */,
 				EA4DB3B52A6D503D00AD26AC /* edutainmentApp.swift */,
 				EA4DB3B72A6D503D00AD26AC /* ContentView.swift */,
 				EA4DB3B92A6D503D00AD26AC /* Assets.xcassets */,
@@ -65,6 +71,22 @@
 				EA4DB3BC2A6D503E00AD26AC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EA800D792A73D4C5009FD50B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EA800D802A73DBC5009FD50B /* QuestionScreen.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		EA800D7C2A73D53B009FD50B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EA800D7D2A73D54D009FD50B /* Question.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA4DB3B82A6D503D00AD26AC /* ContentView.swift in Sources */,
+				EA800D812A73DBC5009FD50B /* QuestionScreen.swift in Sources */,
+				EA800D7E2A73D54D009FD50B /* Question.swift in Sources */,
 				EA4DB3B62A6D503D00AD26AC /* edutainmentApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
