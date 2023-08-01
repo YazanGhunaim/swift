@@ -15,6 +15,8 @@ struct AddView: View {
     @State private var type = "Personal"
     @State private var amount = 0.0
     
+    let preferences = UserPreferences()
+    
     let types = ["Business", "Personal"]
     
     var body: some View {
@@ -28,14 +30,20 @@ struct AddView: View {
                     }
                 }
                 
-                TextField("Amount", value: $amount, format: .currency(code: "USD"))
+                TextField("Amount", value: $amount, format: .currency(code: preferences.currency ?? "USD"))
                     .keyboardType(.decimalPad)
             }
             .navigationTitle("Add new expense")
             .toolbar {
                 Button("Save") {
                     let item = ExpenseItem(name: name, type: type, amount: amount)
-                    expenses.items.append(item)
+                    if type == "Personal" {
+                        expenses.personalItems.append(item)
+                    } else {
+                        expenses.businessItems.append(item)
+                    }
+                    
+                    print(expenses.businessItems)
                     dismiss()
                 }
             }

@@ -14,6 +14,8 @@
 		EA1745C02A755C6000151F37 /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1745BF2A755C6000151F37 /* ExpenseItem.swift */; };
 		EA1745C22A755C9C00151F37 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1745C12A755C9C00151F37 /* Expenses.swift */; };
 		EA1745C62A75603A00151F37 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1745C52A75603A00151F37 /* AddView.swift */; };
+		EA33B9262A790CB700EF547E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33B9252A790CB700EF547E /* UserPreferences.swift */; };
+		EA33B9282A790F9700EF547E /* Stylings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA33B9272A790F9700EF547E /* Stylings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		EA1745BF2A755C6000151F37 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 		EA1745C12A755C9C00151F37 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 		EA1745C52A75603A00151F37 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		EA33B9252A790CB700EF547E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		EA33B9272A790F9700EF547E /* Stylings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 		EA1745B02A755BD600151F37 /* iExpense */ = {
 			isa = PBXGroup;
 			children = (
+				EA33B9252A790CB700EF547E /* UserPreferences.swift */,
 				EA1745B12A755BD600151F37 /* iExpenseApp.swift */,
 				EA1745B32A755BD600151F37 /* ContentView.swift */,
 				EA1745C52A75603A00151F37 /* AddView.swift */,
@@ -64,6 +69,7 @@
 				EA1745C12A755C9C00151F37 /* Expenses.swift */,
 				EA1745B52A755BD600151F37 /* Assets.xcassets */,
 				EA1745B72A755BD600151F37 /* Preview Content */,
+				EA33B9272A790F9700EF547E /* Stylings.swift */,
 			);
 			path = iExpense;
 			sourceTree = "<group>";
@@ -147,8 +153,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA1745C22A755C9C00151F37 /* Expenses.swift in Sources */,
+				EA33B9262A790CB700EF547E /* UserPreferences.swift in Sources */,
 				EA1745B42A755BD600151F37 /* ContentView.swift in Sources */,
 				EA1745C62A75603A00151F37 /* AddView.swift in Sources */,
+				EA33B9282A790F9700EF547E /* Stylings.swift in Sources */,
 				EA1745C02A755C6000151F37 /* ExpenseItem.swift in Sources */,
 				EA1745B22A755BD600151F37 /* iExpenseApp.swift in Sources */,
 			);
