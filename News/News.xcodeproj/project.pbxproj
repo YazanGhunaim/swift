@@ -20,7 +20,6 @@
 		EA79173B2AA864FB00924E1B /* SavedArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79173A2AA864FB00924E1B /* SavedArticlesView.swift */; };
 		EA7917472AA87BF500924E1B /* SavedArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7917462AA87BF500924E1B /* SavedArticles.swift */; };
 		EA7917492AA888DB00924E1B /* articleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7917482AA888DB00924E1B /* articleService.swift */; };
-		EA79174C2AA88BD400924E1B /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79174B2AA88BD400924E1B /* Bundle-Decodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 		EA79173A2AA864FB00924E1B /* SavedArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticlesView.swift; sourceTree = "<group>"; };
 		EA7917462AA87BF500924E1B /* SavedArticles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticles.swift; sourceTree = "<group>"; };
 		EA7917482AA888DB00924E1B /* articleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = articleService.swift; sourceTree = "<group>"; };
-		EA79174B2AA88BD400924E1B /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +73,6 @@
 				EA7917172AA7685900924E1B /* Core */,
 				EA7917162AA7685500924E1B /* Models */,
 				EA7917342AA8618400924E1B /* Services */,
-				EA79174A2AA88BB900924E1B /* Utils */,
 				EA79170C2AA7567F00924E1B /* Assets.xcassets */,
 				EA79170E2AA7567F00924E1B /* Preview Content */,
 			);
@@ -208,14 +205,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		EA79174A2AA88BB900924E1B /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				EA79174B2AA88BD400924E1B /* Bundle-Decodable.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -302,7 +291,6 @@
 				EA7917092AA7567E00924E1B /* NewsApp.swift in Sources */,
 				EA7917332AA8591900924E1B /* NewsDetailsView.swift in Sources */,
 				EA7917252AA7715C00924E1B /* NewsModel.swift in Sources */,
-				EA79174C2AA88BD400924E1B /* Bundle-Decodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
