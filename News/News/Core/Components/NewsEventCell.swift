@@ -9,16 +9,16 @@ import SwiftUI
 import Kingfisher
 
 struct NewsEventCell: View {
-    let newsEvent: Article
+    let article: Article
     
     var body: some View {
         HStack(spacing: 15) {
             // MARK: News Image
-            if let url = newsEvent.urlToImage {
+            if let url = article.urlToImage {
                 KFImage(URL(string: url))
                     .resizable()
-                    .frame(width: 125, height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                    .frame(width: 150, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     .scaledToFit()
             }
             else {
@@ -28,13 +28,13 @@ struct NewsEventCell: View {
             
             // MARK: News details
             VStack(alignment: .leading) {
-                Text(newsEvent.source.name)
+                Text(article.source.name)
                     .font(.footnote)
                     .foregroundColor(.gray)
                 
                 Spacer()
                 
-                Text(newsEvent.title)
+                Text(article.title)
                     .font(.headline)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.leading)
@@ -43,11 +43,11 @@ struct NewsEventCell: View {
                 
                 // MARK: Author + Date
                 HStack {
-                    Text(newsEvent.author ?? "Yazan Ghunaim")
+                    Text(article.author ?? "Yazan Ghunaim")
                     
                     Spacer()
                     
-                    Text(newsEvent.publishedAt.formatted(.dateTime.day().month().year()))
+                    Text(article.formattedDate)
                 }
                 .foregroundColor(.gray.opacity(0.5))
                 .font(.caption)

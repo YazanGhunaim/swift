@@ -7,7 +7,7 @@
 
 import Foundation
 
-let dummyData =
+var dummyData =
 [
     Article(
         source: Source(id: "cnn", name: "CNN"),

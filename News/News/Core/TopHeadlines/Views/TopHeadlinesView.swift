@@ -10,25 +10,26 @@ import SwiftUI
 struct TopHeadlinesView: View {
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
-                
-                ScrollView(showsIndicators: false) {
-                    LazyVStack(alignment: .leading) {
-                        ForEach(dummyData) { event in
-                            NavigationLink {
-                                Text("News Detail View")
-                            } label: {
-                                NewsEventCell(newsEvent: event)
-                            }
-                            
-                            Divider()
+            ScrollView(showsIndicators: false) {
+                LazyVStack(alignment: .leading) {
+                    
+                    // MARK: Title and caption
+                    header
+                    
+                    ForEach(dummyData) { article in
+                        NavigationLink {
+                            NewsDetailsView(article: article)
+                        } label: {
+                            NewsEventCell(article: article)
                         }
+                        
+                        Divider()
                     }
-                    .padding()
                 }
+                .padding()
             }
-            .navigationTitle("Top Headlines")
-//            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Home")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 
                 // MARK: Menu button
@@ -68,5 +69,19 @@ struct TopHeadlinesView: View {
 struct TopHeadlinesView_Previews: PreviewProvider {
     static var previews: some View {
         TopHeadlinesView()
+    }
+}
+
+extension TopHeadlinesView {
+    var header: some View {
+        VStack(alignment: .leading) {
+            Text("Top Headlines")
+                .font(.title.bold())
+            
+            Text("Headlines from all around the world")
+                .font(.caption)
+                .opacity(0.5)
+        }
+        .padding(.bottom, 5)
     }
 }

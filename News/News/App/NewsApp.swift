@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct NewsApp: App {
+    @StateObject var savedArticles = SavedArticles()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(savedArticles)
         }
     }
 }

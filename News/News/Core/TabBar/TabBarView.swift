@@ -23,7 +23,7 @@ struct TabBarView: View {
                 .onAppear { selectedTab = 0 }
                 .tag(0)
             
-            Text("Saved Articles View")
+            SavedArticlesView()
                 .tabItem {
                     VStack {
                         Image(systemName: "bookmark")
