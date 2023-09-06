@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct TopHeadlinesView: View {
+    @EnvironmentObject var savedArticles: SavedArticles
+    @State private var newsResponse: NewsResponse? = nil {
+        didSet {
+            if let articles = newsResponse?.articles {
+                newsArticles = articles
+            }
+        }
+    }
+    @State private var errorMessage: String? = nil
+    @State private var newsArticles = [Article]()
+    
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
@@ -16,7 +27,7 @@ struct TopHeadlinesView: View {
                     // MARK: Title and caption
                     header
                     
-                    ForEach(dummyData) { article in
+                    ForEach(newsArticles) { article in
                         NavigationLink {
                             NewsDetailsView(article: article)
                         } label: {
@@ -62,6 +73,10 @@ struct TopHeadlinesView: View {
                     }
                 }
             }
+            .onAppear {
+                Task { await loadData() }
+            }
+            .refreshable { Task {await loadData()} }
         }
     }
 }
@@ -83,5 +98,19 @@ extension TopHeadlinesView {
                 .opacity(0.5)
         }
         .padding(.bottom, 5)
+    }
+}
+
+extension TopHeadlinesView {
+    func loadData() async {
+        let result =  await ArticleService().fetchNewsArticles()
+        switch result {
+        case .success(let response):
+            // Handle the successful response
+            self.newsResponse = response
+        case .failure(let error):
+            // Handle the error
+            self.errorMessage = error.localizedDescription
+        }
     }
 }

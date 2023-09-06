@@ -36,10 +36,10 @@ struct SavedArticlesView: View {
                         Button {
                             showConfirmation = true
                         } label: {
-                            Text("Reset all")
+                            Text("Delete all")
                         }
                         .tint(.red)
-
+                        
                     }
                 }
                 .alert("Are you sure?", isPresented: $showConfirmation) {
@@ -48,12 +48,7 @@ struct SavedArticlesView: View {
                 }
             }
         } else {
-            VStack(spacing: 10) {
-                Text("Uh oh .. nothing here!")
-                    .font(.largeTitle)
-                Text("try bookmarking a news article first!")
-                    .font(.subheadline)
-            }
+            nothingHere
         }
     }
 }
@@ -61,5 +56,16 @@ struct SavedArticlesView: View {
 struct SavedArticlesView_Previews: PreviewProvider {
     static var previews: some View {
         SavedArticlesView()
+    }
+}
+
+extension SavedArticlesView {
+    var nothingHere: some View {
+        VStack(spacing: 10) {
+            Text("Uh oh .. nothing here!")
+                .font(.largeTitle)
+            Text("try bookmarking a news article first!")
+                .font(.subheadline)
+        }
     }
 }

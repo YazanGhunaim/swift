@@ -17,12 +17,13 @@ struct NewsEventCell: View {
             if let url = article.urlToImage {
                 KFImage(URL(string: url))
                     .resizable()
-                    .frame(width: 150, height: 100)
+                    .frame(width: 125, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .scaledToFit()
             }
             else {
                 Image(systemName: "newspaper")
+                    .frame(width: 125, height: 100)
             }
             
             
@@ -34,7 +35,7 @@ struct NewsEventCell: View {
                 
                 Spacer()
                 
-                Text(article.title)
+                Text(article.title ?? "no title")
                     .font(.headline)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.leading)

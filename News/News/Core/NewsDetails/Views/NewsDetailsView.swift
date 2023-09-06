@@ -48,22 +48,22 @@ struct NewsDetailsView: View {
     }
 }
 
-struct NewsDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            NewsDetailsView(article: Article(
-                source: Source(id: "cnn", name: "CNN"),
-                author: "John Doe",
-                title: "Breaking News: COVID-19 Vaccine Approved",
-                description: "The COVID-19 vaccine has been approved for widespread distribution.",
-                url: "https://www.cnn.com/news/covid-19-vaccine-approved",
-                urlToImage: "https://image.cnbcfm.com/api/v1/image/107294516-1693495171428-gettyimages-1650708091-img_8114_widhmesr.jpeg?v=1693865312&w=1920&h=1080",
-                publishedAt: Date(),
-                content: "In a major development, the COVID-19 vaccine has been approved for widespread distribution, offering hope in the fight against the pandemic."
-            ))
-        }
-    }
-}
+//struct NewsDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack {
+//            NewsDetailsView(article: Article(
+//                source: Source(id: "cnn", name: "CNN"),
+//                author: "John Doe",
+//                title: "Breaking News: COVID-19 Vaccine Approved",
+//                description: "The COVID-19 vaccine has been approved for widespread distribution.",
+//                url: "https://www.cnn.com/news/covid-19-vaccine-approved",
+//                urlToImage: "https://image.cnbcfm.com/api/v1/image/107294516-1693495171428-gettyimages-1650708091-img_8114_widhmesr.jpeg?v=1693865312&w=1920&h=1080",
+//                publishedAt: Date(),
+//                content: "In a major development, the COVID-19 vaccine has been approved for widespread distribution, offering hope in the fight against the pandemic."
+//            ))
+//        }
+//    }
+//}
 
 
 extension NewsDetailsView {
@@ -83,10 +83,10 @@ extension NewsDetailsView {
     var titleAndDescription: some View {
         VStack(alignment: .leading, spacing: 5) {
             
-            Text(article.title)
+            Text(article.title ?? "no title" )
                 .font(.title)
             
-            Text(article.description)
+            Text(article.description ?? " no desc")
                 .font(.footnote)
                 .opacity(0.7)
         }

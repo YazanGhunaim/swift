@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SavedArticles: ObservableObject {
     @Published var bookmarkedArticles = [Article]()
+    
     var existBookmarks: Bool {
         return !bookmarkedArticles.isEmpty
     }
