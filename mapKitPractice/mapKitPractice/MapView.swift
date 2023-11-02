@@ -14,7 +14,7 @@ struct MapView: View {
     var body: some View {
         Map(coordinateRegion: $mapController.region, annotationItems: mapController.buisnesses) { business in
             MapAnnotation(coordinate: business.coordinate) {
-                Image(systemName: "mappin.and.ellipse")
+                Image(systemName: "mappin.and.ellipse.circle.fill")
                     .font(.title)
                     .foregroundStyle(.pink)
                     .onTapGesture {
