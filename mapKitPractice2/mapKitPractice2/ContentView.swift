@@ -57,7 +57,7 @@ struct ContentView: View {
                     .stroke(.blue, lineWidth: 6)
             }
         }
-        .overlay(alignment: .top) {
+        .overlay(alignment: .bottom) {
             TextField("Search for a location...", text: $searchText)
                 .font(.subheadline)
                 .padding(12)
@@ -66,6 +66,7 @@ struct ContentView: View {
                 .shadow(radius: 10)
         }
         .onSubmit(of: .text) {
+            self.route = nil
             Task { await searchPlaces() }
         }
         .onChange(of: getDirections, { oldValue, newValue in
